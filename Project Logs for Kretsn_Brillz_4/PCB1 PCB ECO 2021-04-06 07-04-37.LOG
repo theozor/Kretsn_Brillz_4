@@ -1,0 +1,36 @@
+Change Component Footprint: Designator=SW4 Old Footprint=Btn_Horiz New Footprint=430481025816
+Change Component Footprint: Designator=SW5 Old Footprint=Btn_Horiz New Footprint=430481025816
+Change Component Comment : Designator=SW4 Old Comment=Horizontal button New Comment=430481025816
+Change Component Comment : Designator=SW5 Old Comment=Horizontal button New Comment=430481025816
+Change component parameters: Designator = "SW4" ("SW4"); Footprint = "Btn_Horiz"; UniqueID = "\FFXOKVDH\RQPTJUCH" ("\FFXOKVDH\RQPTJUCH")
+Change component parameters (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MF"; Value = "{'manufacturer': u'Wurth Elektronik'}"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MP"; Value = "430481025816"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "SW5" ("SW5"); Footprint = "Btn_Horiz"; UniqueID = "\FFXOKVDH\YEKHCCGQ" ("\FFXOKVDH\YEKHCCGQ")
+Change component parameters (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MF"; Value = "{'manufacturer': u'Wurth Elektronik'}"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MP"; Value = "430481025816"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Room: Name=main
+Added Room: Name=U_Column1
+Added Room: Name=U_Column2
+Added Room: Name=U_Column3
+Added Room: Name=U_Column4
+Added Room: Name=U_Column5
+Added Room: Name=U_Column6
+Added Room: Name=U_Column7
+Added Room: Name=U_Column8
+Added Room: Name=U_Column9
+Added Room: Name=U_Column10
+Added Room: Name=U_Column12
+Added Room: Name=U_Column13
+Added Room: Name=U_Column14
+Added Room: Name=U_Column15
+Added Room: Name=U_Controller
+Added Room: Name=U_serpentine2
+Added Room: Name=U_serpentine

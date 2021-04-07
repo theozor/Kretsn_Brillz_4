@@ -1,0 +1,4 @@
+Change Component Footprint: Designator=HWB Old Footprint=MHDR1X2 New Footprint=smd jumper
+Change Component Comment : Designator=HWB Old Comment=MHDR1X2 New Comment=jumper
+Change component parameters: Designator = "HWB" ("HWB"); Footprint = "MHDR1X2"; UniqueID = "\NVKKGDAF" ("\NVKKGDAF")
+Change Net Name : Old Net Name=NetP3_2 New Net Name=NetHWB_2

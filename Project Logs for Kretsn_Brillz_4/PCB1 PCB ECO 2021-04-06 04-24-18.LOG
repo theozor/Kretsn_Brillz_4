@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=SPI_MISO Pin=ICSP-1
+Removed Pin From Net: NetName=+5 Pin=ICSP-2
+Removed Pin From Net: NetName=SPI_SCK Pin=ICSP-3
+Removed Pin From Net: NetName=SPI_MOSI Pin=ICSP-4
+Removed Pin From Net: NetName=RST Pin=ICSP-5
+Removed Pin From Net: NetName=GND Pin=ICSP-6
+Removed Member From Class: ClassName=main Member=ICSP
