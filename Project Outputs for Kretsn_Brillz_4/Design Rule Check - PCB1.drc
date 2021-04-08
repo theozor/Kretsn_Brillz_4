@@ -1,0 +1,171 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc
+Date     : 2021-04-08
+Time     : 22:36:09
+
+Processing Rule : Clearance Constraint (Gap=8mil) (OnLayer('Bottom Layer')),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=8mil) (OnLayer('Top Layer')),(All)
+   Violation between Clearance Constraint: (Collision < 8mil) Between Pad HWB-2(3270mil,2758.75mil) on Top Layer And Region (0 hole(s)) Top Layer 
+   Violation between Clearance Constraint: (Collision < 8mil) Between Pad HWB-2(3270mil,2758.75mil) on Top Layer And Region (0 hole(s)) Top Layer 
+Rule Violations :2
+
+Processing Rule : Clearance Constraint (Gap=7.874mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+   Violation between Short-Circuit Constraint: Between Pad HWB-2(3270mil,2758.75mil) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 3260mil][Y = 2747mil]
+   Violation between Short-Circuit Constraint: Between Pad HWB-2(3270mil,2758.75mil) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 3280mil][Y = 2747mil]
+Rule Violations :2
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=3.5mil) (Max=100mil) (Preferred=15mil) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Minimum Annular Ring (Minimum=3mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=7.874mil) (Max=248.031mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=3.937mil) (All),(All)
+   Violation between Minimum Solder Mask Sliver Constraint: (1.414mil < 3.937mil) Between Pad HWB-1(3270mil,2691.25mil) on Top Layer And Region (0 hole(s)) Top Solder [Top Solder] Mask Sliver [1.414mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.414mil < 3.937mil) Between Pad HWB-1(3270mil,2691.25mil) on Top Layer And Region (0 hole(s)) Top Solder [Top Solder] Mask Sliver [1.414mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.414mil < 3.937mil) Between Pad HWB-2(3270mil,2758.75mil) on Top Layer And Region (0 hole(s)) Top Solder [Top Solder] Mask Sliver [1.414mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (2.672mil < 3.937mil) Between Pad J2-A12(3932.362mil,1975.768mil) on Top Layer And Pad J2-Un1(3958.347mil,2009.232mil) on Multi-Layer [Top Solder] Mask Sliver [2.672mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (2.6mil < 3.937mil) Between Pad J2-B1(3983.937mil,1977.736mil) on Multi-Layer And Pad J2-Un1(3958.347mil,2009.232mil) on Multi-Layer [Top Solder] Mask Sliver [2.6mil] / [Bottom Solder] Mask Sliver [2.6mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (3.739mil < 3.937mil) Between Pad J2-S4(4007.559mil,2030.098mil) on Multi-Layer And Pad J2-Un1(3958.347mil,2009.232mil) on Multi-Layer [Top Solder] Mask Sliver [3.739mil] / [Bottom Solder] Mask Sliver [3.739mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-A1(6258.898mil,2736.732mil) on Bottom Layer And Pad USB1-A2(6258.898mil,2756.417mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.465mil < 3.937mil) Between Pad USB1-A1(6258.898mil,2736.732mil) on Bottom Layer And Pad USB1-S1(6247.874mil,2683.583mil) on Multi-Layer [Bottom Solder] Mask Sliver [0.465mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-A10(6258.898mil,2913.898mil) on Bottom Layer And Pad USB1-A11(6258.898mil,2933.583mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-A10(6258.898mil,2913.898mil) on Bottom Layer And Pad USB1-A9(6258.898mil,2894.213mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-A11(6258.898mil,2933.583mil) on Bottom Layer And Pad USB1-A12(6258.898mil,2953.268mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.465mil < 3.937mil) Between Pad USB1-A12(6258.898mil,2953.268mil) on Bottom Layer And Pad USB1-S2(6247.874mil,3006.417mil) on Multi-Layer [Bottom Solder] Mask Sliver [0.465mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-A2(6258.898mil,2756.417mil) on Bottom Layer And Pad USB1-A3(6258.898mil,2776.102mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-A3(6258.898mil,2776.102mil) on Bottom Layer And Pad USB1-A4(6258.898mil,2795.787mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-A4(6258.898mil,2795.787mil) on Bottom Layer And Pad USB1-A5(6258.898mil,2815.472mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-A5(6258.898mil,2815.472mil) on Bottom Layer And Pad USB1-A6(6258.898mil,2835.157mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-A6(6258.898mil,2835.157mil) on Bottom Layer And Pad USB1-A7(6258.898mil,2854.843mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-A7(6258.898mil,2854.843mil) on Bottom Layer And Pad USB1-A8(6258.898mil,2874.528mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-A8(6258.898mil,2874.528mil) on Bottom Layer And Pad USB1-A9(6258.898mil,2894.213mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-B1(6121.102mil,2953.268mil) on Bottom Layer And Pad USB1-B2(6121.102mil,2933.583mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.465mil < 3.937mil) Between Pad USB1-B1(6121.102mil,2953.268mil) on Bottom Layer And Pad USB1-S3(6132.126mil,3006.417mil) on Multi-Layer [Bottom Solder] Mask Sliver [0.465mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-B10(6121.102mil,2776.102mil) on Bottom Layer And Pad USB1-B11(6121.102mil,2756.417mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-B10(6121.102mil,2776.102mil) on Bottom Layer And Pad USB1-B9(6121.102mil,2795.787mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-B11(6121.102mil,2756.417mil) on Bottom Layer And Pad USB1-B12(6121.102mil,2736.732mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.465mil < 3.937mil) Between Pad USB1-B12(6121.102mil,2736.732mil) on Bottom Layer And Pad USB1-S4(6132.126mil,2683.583mil) on Multi-Layer [Bottom Solder] Mask Sliver [0.465mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-B2(6121.102mil,2933.583mil) on Bottom Layer And Pad USB1-B3(6121.102mil,2913.898mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-B3(6121.102mil,2913.898mil) on Bottom Layer And Pad USB1-B4(6121.102mil,2894.213mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-B4(6121.102mil,2894.213mil) on Bottom Layer And Pad USB1-B5(6121.102mil,2874.528mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-B5(6121.102mil,2874.528mil) on Bottom Layer And Pad USB1-B6(6121.102mil,2854.843mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-B6(6121.102mil,2854.843mil) on Bottom Layer And Pad USB1-B7(6121.102mil,2835.157mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-B7(6121.102mil,2835.157mil) on Bottom Layer And Pad USB1-B8(6121.102mil,2815.472mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.055mil < 3.937mil) Between Pad USB1-B8(6121.102mil,2815.472mil) on Bottom Layer And Pad USB1-B9(6121.102mil,2795.787mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.414mil < 3.937mil) Between Region (0 hole(s)) Top Solder And Region (0 hole(s)) Top Solder [Top Solder] Mask Sliver [1.414mil]
+   Violation between Minimum Solder Mask Sliver Constraint: (1.414mil < 3.937mil) Between Region (0 hole(s)) Top Solder And Region (0 hole(s)) Top Solder [Top Solder] Mask Sliver [1.414mil]
+Rule Violations :34
+
+Processing Rule : Silk To Solder Mask (Clearance=3.937mil) (IsPad),(All)
+Rule Violations :0
+
+Processing Rule : Silk to Silk (Clearance=3.937mil) (All),(All)
+   Violation between Silk To Silk Clearance Constraint: (Collision < 3.937mil) Between Text "HWB" (3190.026mil,2840.01mil) on Top Overlay And Track (3248.333mil,2851.667mil)(3265mil,2835mil) on Top Overlay Silk Text to Silk Clearance [0mil]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 3.937mil) Between Text "HWB" (3190.026mil,2840.01mil) on Top Overlay And Track (3265mil,2835mil)(3281.666mil,2851.667mil) on Top Overlay Silk Text to Silk Clearance [0mil]
+Rule Violations :2
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+   Violation between Net Antennae: Via (1481.222mil,2577.044mil) from Top Layer to Bottom Layer 
+Rule Violations :1
+
+Processing Rule : Board Clearance Constraint (Gap=0mil) (All)
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (1641.694mil,2398.818mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.393mil < 7.874mil) Between Arc (1641.695mil,1965.747mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (1657.443mil,1886.22mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (1657.443mil,2319.291mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.393mil < 7.874mil) Between Arc (1858.23mil,1965.747mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (1858.23mil,2398.818mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (1873.978mil,1886.22mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (1873.978mil,2319.291mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.393mil < 7.874mil) Between Arc (2074.765mil,1965.747mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (2074.765mil,2398.818mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (2090.514mil,1886.22mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (2090.514mil,2319.291mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.393mil < 7.874mil) Between Arc (2291.301mil,1965.747mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (2291.301mil,2398.818mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (2307.049mil,1886.22mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (2307.049mil,2319.291mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.393mil < 7.874mil) Between Arc (2507.836mil,1965.747mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (2507.836mil,2398.818mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (2523.584mil,1886.22mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (2523.584mil,2319.291mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.393mil < 7.874mil) Between Arc (2724.372mil,1965.747mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (2724.372mil,2398.818mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (2740.12mil,1886.22mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (2740.12mil,2319.291mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (4614.135mil,1749.212mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (4614.135mil,2182.283mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (4614.135mil,2615.354mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (4629.883mil,1669.685mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (4629.883mil,2102.756mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (4629.883mil,2535.826mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (4830.671mil,1749.212mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (4830.671mil,2182.283mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (4830.671mil,2615.354mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (4846.419mil,1669.685mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (4846.419mil,2102.756mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (4846.419mil,2535.826mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5047.206mil,1749.212mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5047.206mil,2182.283mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5047.206mil,2615.354mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5062.954mil,1669.685mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5062.954mil,2102.756mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.395mil < 7.874mil) Between Arc (5062.954mil,2535.826mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5263.742mil,1749.212mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5263.742mil,2182.283mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5263.742mil,2615.354mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5279.49mil,1669.685mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5279.49mil,2102.756mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.395mil < 7.874mil) Between Arc (5279.49mil,2535.826mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5480.277mil,1749.212mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5480.277mil,2182.283mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5480.277mil,2615.354mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5496.025mil,1669.685mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5496.025mil,2102.756mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.396mil < 7.874mil) Between Arc (5496.025mil,2535.826mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5696.812mil,1749.212mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5696.812mil,2182.283mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5696.813mil,2615.354mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5712.561mil,1669.685mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (0.394mil < 7.874mil) Between Arc (5712.561mil,2102.756mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (1.278mil < 7.874mil) Between Arc (5712.561mil,2535.826mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer 
+   Violation between Board Outline Clearance(Cutout Edge): (4.612mil < 7.874mil) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Text "C20" (4420mil,1685mil) on Top Overlay 
+   Violation between Board Outline Clearance(Cutout Edge): (7.058mil < 7.874mil) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Text "O ser allt" (2710.528mil,2450mil) on Bottom Overlay 
+   Violation between Board Outline Clearance(Cutout Edge): (0.554mil < 7.874mil) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Track (3148.701mil,2073.72mil)(3180.197mil,2073.72mil) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (6.654mil < 7.874mil) Between Board Edge And Text "Kretsn_Brillz_V4
+Theofil E. Petrovski
+LEDs: Albin Lejåker" (2690.334mil,2830mil) on Bottom Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (6.654mil < 7.874mil) Between Board Edge And Text "Owner:[ ][ ][ ][ ][ ][ ][ ]" (5975mil,3017.672mil) on Bottom Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (7.134mil < 7.874mil) Between Board Edge And Text "R1" (4010mil,3110mil) on Bottom Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (6.664mil < 7.874mil) Between Board Edge And Text "Y1" (4025.013mil,3070.01mil) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (0.493mil < 7.874mil) Between Board Edge And Track (3148.701mil,1601.28mil)(3180.197mil,1601.28mil) on Top Overlay 
+Rule Violations :68
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+
+Violations Detected : 109
+Waived Violations : 0
+Time Elapsed        : 00:00:03

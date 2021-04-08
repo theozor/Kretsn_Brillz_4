@@ -1,0 +1,693 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD21\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2021-04-08</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">22:36:09</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:03</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc" class="file"><acronym title="C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc">C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">109</td></tr>
+</table>
+</td>
+</table><a name="ID5KSVUG4J4TRXM2WBM00WLGVZ1NGZMCQI1KO34HEMVO4M1HCGFHJO"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDK2QMD3IYU0B5JKPURLV5DLHB3HIYJZ4PY1GG5RMMI1NA2GQTLIRC">Clearance Constraint (Gap=8mil) (OnLayer('Bottom Layer')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDYPNOVEMGVS1KEXXTNULBE5WNXLLPP0CNRS5FIHCG3D01HM15GNAH">Clearance Constraint (Gap=8mil) (OnLayer('Top Layer')),(All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDTIX32WPBTAM3VRJRVXFITGLRBR4G4PT513U5KFEXSW3MZDGWL3M">Clearance Constraint (Gap=7.874mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDHD0SWGVXSAZ0EAD4H0TLBBKQRBW4PTVLUP2WK2O5HKIT515LUDYE">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDXT2MXNR2KNP0NV3T2SBHED1WKNT0ATROANTQK1NCIEM5RBPEADJE">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4YAJLZYWCZXSNVKRWSCIOAWTLFHFUXQJL5YHYLOXLY5HUNQ25HUJ">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDPC4JJ30MUB3BD3XQI32IX5PJBJCG2CBZ5DQOWXBJENSCZLV43W4E">Width Constraint (Min=3.5mil) (Max=100mil) (Preferred=15mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID5J1YLUTKICGJFX1RULFT5012OUQWWGI4Q1LDKPMIPG0UCHRDX4K">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDY3N4T4IOI2DJMIAXNPIAYB2TICSO5TGKPT3FPEOIYE23BTL512EG">Minimum Annular Ring (Minimum=3mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID1ZFHIZ2ERPEFIQQWOBQXN1QVAPFUCJ4UIMOBG0KWK4EA3VXPMV5">Hole Size Constraint (Min=7.874mil) (Max=248.031mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3ZFYZVFNZ2F3EEFIQTUEROPMEDQZDXIVD4U3OSDW4MARFVYX13HF">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDOQC5WWDAPPPWVUPWHB5G0N2PMO1GBXLMAKIY1BDRY4IQLSR04UF">Minimum Solder Mask Sliver (Gap=3.937mil) (All),(All)</a></td>
+<td class="column2">34</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDK3DJODEEOCYLGRLC3RB2K1R22HURQ5ZPEDXNUAJZDA0TZ3HL3RUO">Silk To Solder Mask (Clearance=3.937mil) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZ4QZ4H0MYGTTFWWBOAWRVURTGE0KJCHDSHTTCEJGAD1AXUHD5T1K">Silk to Silk (Clearance=3.937mil) (All),(All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3VFOP0S1EB2UIX5S3P11IMIBLM1KEQVRE2TM4SB03WOL23VP4O0D">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJMCEA5DYYE24D1RHRC1AQGFRPCUDARYZ3GJGQHI1HGAILHSEGPYP">Board Clearance Constraint (Gap=0mil) (All)</a></td>
+<td class="column2">68</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID4IQWJEMVPWWIF22IVDHDKA5I2KCDVFHTUCUDECFY1DVY0KIPUVIM">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">109</td>
+</tr>
+</table><br><a name="IDYPNOVEMGVS1KEXXTNULBE5WNXLLPP0CNRS5FIHCG3D01HM15GNAH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=8mil) (OnLayer('Top Layer')),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3246.833mil|Location2.X=3253.167mil|Location1.Y=2748.083mil|Location2.Y=2754.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3246.833mil|Location2.X=3253.167mil|Location1.Y=2748.083mil|Location2.Y=2754.417mil|Absolute=True">Clearance Constraint: (Collision &lt; 8mil) Between Pad HWB-2(3270mil,2758.75mil) on Top Layer And Region (0 hole(s)) Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3266.833mil|Location2.X=3273.167mil|Location1.Y=2739.583mil|Location2.Y=2745.917mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3266.833mil|Location2.X=3273.167mil|Location1.Y=2739.583mil|Location2.Y=2745.917mil|Absolute=True">Clearance Constraint: (Collision &lt; 8mil) Between Pad HWB-2(3270mil,2758.75mil) on Top Layer And Region (0 hole(s)) Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDHD0SWGVXSAZ0EAD4H0TLBBKQRBW4PTVLUP2WK2O5HKIT515LUDYE"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Short-Circuit Constraint (Allowed=No) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3247.634mil|Location2.X=3272.366mil|Location1.Y=2734.634mil|Location2.Y=2759.366mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3247.634mil|Location2.X=3272.366mil|Location1.Y=2734.634mil|Location2.Y=2759.366mil|Absolute=True">Short-Circuit Constraint: Between Pad HWB-2(3270mil,2758.75mil) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 3260mil][Y = 2747mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3267.634mil|Location2.X=3292.366mil|Location1.Y=2734.634mil|Location2.Y=2759.366mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3267.634mil|Location2.X=3292.366mil|Location1.Y=2734.634mil|Location2.Y=2759.366mil|Absolute=True">Short-Circuit Constraint: Between Pad HWB-2(3270mil,2758.75mil) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 3280mil][Y = 2747mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDOQC5WWDAPPPWVUPWHB5G0N2PMO1GBXLMAKIY1BDRY4IQLSR04UF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=3.937mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3266.907mil|Location2.X=3273.86mil|Location1.Y=2733.157mil|Location2.Y=2740.181mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3266.907mil|Location2.X=3273.86mil|Location1.Y=2733.157mil|Location2.Y=2740.181mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.414mil &lt; 3.937mil) Between Pad HWB-1(3270mil,2691.25mil) on Top Layer And Region (0 hole(s)) Top Solder [Top Solder] Mask Sliver [1.414mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3267.907mil|Location2.X=3274.931mil|Location1.Y=2731.39mil|Location2.Y=2738.343mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3267.907mil|Location2.X=3274.931mil|Location1.Y=2731.39mil|Location2.Y=2738.343mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.414mil &lt; 3.937mil) Between Pad HWB-1(3270mil,2691.25mil) on Top Layer And Region (0 hole(s)) Top Solder [Top Solder] Mask Sliver [1.414mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3290.907mil|Location2.X=3297.931mil|Location1.Y=2708.39mil|Location2.Y=2715.343mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3290.907mil|Location2.X=3297.931mil|Location1.Y=2708.39mil|Location2.Y=2715.343mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.414mil &lt; 3.937mil) Between Pad HWB-2(3270mil,2758.75mil) on Top Layer And Region (0 hole(s)) Top Solder [Top Solder] Mask Sliver [1.414mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3948.111mil|Location2.X=3957.234mil|Location1.Y=1982.766mil|Location2.Y=1989.478mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3948.111mil|Location2.X=3957.234mil|Location1.Y=1982.766mil|Location2.Y=1989.478mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.672mil &lt; 3.937mil) Between Pad J2-A12(3932.362mil,1975.768mil) on Top Layer And Pad J2-Un1(3958.347mil,2009.232mil) on Multi-Layer [Top Solder] Mask Sliver [2.672mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3968.548mil|Location2.X=3975.502mil|Location1.Y=1987.938mil|Location2.Y=1994.962mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3968.548mil|Location2.X=3975.502mil|Location1.Y=1987.938mil|Location2.Y=1994.962mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.6mil &lt; 3.937mil) Between Pad J2-B1(3983.937mil,1977.736mil) on Multi-Layer And Pad J2-Un1(3958.347mil,2009.232mil) on Multi-Layer [Top Solder] Mask Sliver [2.6mil] / [Bottom Solder] Mask Sliver [2.6mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3973.083mil|Location2.X=3979.859mil|Location1.Y=2015.364mil|Location2.Y=2024.663mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3973.083mil|Location2.X=3979.859mil|Location1.Y=2015.364mil|Location2.Y=2024.663mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (3.739mil &lt; 3.937mil) Between Pad J2-S4(4007.559mil,2030.098mil) on Multi-Layer And Pad J2-Un1(3958.347mil,2009.232mil) on Multi-Layer [Top Solder] Mask Sliver [3.739mil] / [Bottom Solder] Mask Sliver [3.739mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2743.981mil|Location2.Y=2749.168mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2743.981mil|Location2.Y=2749.168mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-A1(6258.898mil,2736.732mil) on Bottom Layer And Pad USB1-A2(6258.898mil,2756.417mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6245.28mil|Location2.X=6250.467mil|Location1.Y=2724.591mil|Location2.Y=2729.778mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6245.28mil|Location2.X=6250.467mil|Location1.Y=2724.591mil|Location2.Y=2729.778mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.465mil &lt; 3.937mil) Between Pad USB1-A1(6258.898mil,2736.732mil) on Bottom Layer And Pad USB1-S1(6247.874mil,2683.583mil) on Multi-Layer [Bottom Solder] Mask Sliver [0.465mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2921.147mil|Location2.Y=2926.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2921.147mil|Location2.Y=2926.334mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-A10(6258.898mil,2913.898mil) on Bottom Layer And Pad USB1-A11(6258.898mil,2933.583mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2901.462mil|Location2.Y=2906.649mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2901.462mil|Location2.Y=2906.649mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-A10(6258.898mil,2913.898mil) on Bottom Layer And Pad USB1-A9(6258.898mil,2894.213mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2940.832mil|Location2.Y=2946.019mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2940.832mil|Location2.Y=2946.019mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-A11(6258.898mil,2933.583mil) on Bottom Layer And Pad USB1-A12(6258.898mil,2953.268mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6245.28mil|Location2.X=6250.467mil|Location1.Y=2960.221mil|Location2.Y=2965.408mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6245.28mil|Location2.X=6250.467mil|Location1.Y=2960.221mil|Location2.Y=2965.408mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.465mil &lt; 3.937mil) Between Pad USB1-A12(6258.898mil,2953.268mil) on Bottom Layer And Pad USB1-S2(6247.874mil,3006.417mil) on Multi-Layer [Bottom Solder] Mask Sliver [0.465mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2763.666mil|Location2.Y=2768.853mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2763.666mil|Location2.Y=2768.853mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-A2(6258.898mil,2756.417mil) on Bottom Layer And Pad USB1-A3(6258.898mil,2776.102mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2783.351mil|Location2.Y=2788.538mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2783.351mil|Location2.Y=2788.538mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-A3(6258.898mil,2776.102mil) on Bottom Layer And Pad USB1-A4(6258.898mil,2795.787mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2803.036mil|Location2.Y=2808.223mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2803.036mil|Location2.Y=2808.223mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-A4(6258.898mil,2795.787mil) on Bottom Layer And Pad USB1-A5(6258.898mil,2815.472mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2822.721mil|Location2.Y=2827.908mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2822.721mil|Location2.Y=2827.908mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-A5(6258.898mil,2815.472mil) on Bottom Layer And Pad USB1-A6(6258.898mil,2835.157mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2842.407mil|Location2.Y=2847.593mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2842.407mil|Location2.Y=2847.593mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-A6(6258.898mil,2835.157mil) on Bottom Layer And Pad USB1-A7(6258.898mil,2854.843mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2862.091mil|Location2.Y=2867.278mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2862.091mil|Location2.Y=2867.278mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-A7(6258.898mil,2854.843mil) on Bottom Layer And Pad USB1-A8(6258.898mil,2874.528mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2881.777mil|Location2.Y=2886.964mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6226.714mil|Location2.X=6231.901mil|Location1.Y=2881.777mil|Location2.Y=2886.964mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-A8(6258.898mil,2874.528mil) on Bottom Layer And Pad USB1-A9(6258.898mil,2894.213mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2940.832mil|Location2.Y=2946.019mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2940.832mil|Location2.Y=2946.019mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-B1(6121.102mil,2953.268mil) on Bottom Layer And Pad USB1-B2(6121.102mil,2933.583mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6129.533mil|Location2.X=6134.72mil|Location1.Y=2960.221mil|Location2.Y=2965.408mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6129.533mil|Location2.X=6134.72mil|Location1.Y=2960.221mil|Location2.Y=2965.408mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.465mil &lt; 3.937mil) Between Pad USB1-B1(6121.102mil,2953.268mil) on Bottom Layer And Pad USB1-S3(6132.126mil,3006.417mil) on Multi-Layer [Bottom Solder] Mask Sliver [0.465mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2763.666mil|Location2.Y=2768.853mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2763.666mil|Location2.Y=2768.853mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-B10(6121.102mil,2776.102mil) on Bottom Layer And Pad USB1-B11(6121.102mil,2756.417mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2783.351mil|Location2.Y=2788.538mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2783.351mil|Location2.Y=2788.538mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-B10(6121.102mil,2776.102mil) on Bottom Layer And Pad USB1-B9(6121.102mil,2795.787mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2743.981mil|Location2.Y=2749.168mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2743.981mil|Location2.Y=2749.168mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-B11(6121.102mil,2756.417mil) on Bottom Layer And Pad USB1-B12(6121.102mil,2736.732mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6129.533mil|Location2.X=6134.72mil|Location1.Y=2724.591mil|Location2.Y=2729.778mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6129.533mil|Location2.X=6134.72mil|Location1.Y=2724.591mil|Location2.Y=2729.778mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.465mil &lt; 3.937mil) Between Pad USB1-B12(6121.102mil,2736.732mil) on Bottom Layer And Pad USB1-S4(6132.126mil,2683.583mil) on Multi-Layer [Bottom Solder] Mask Sliver [0.465mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2921.147mil|Location2.Y=2926.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2921.147mil|Location2.Y=2926.334mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-B2(6121.102mil,2933.583mil) on Bottom Layer And Pad USB1-B3(6121.102mil,2913.898mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2901.462mil|Location2.Y=2906.649mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2901.462mil|Location2.Y=2906.649mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-B3(6121.102mil,2913.898mil) on Bottom Layer And Pad USB1-B4(6121.102mil,2894.213mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2881.777mil|Location2.Y=2886.964mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2881.777mil|Location2.Y=2886.964mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-B4(6121.102mil,2894.213mil) on Bottom Layer And Pad USB1-B5(6121.102mil,2874.528mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2862.091mil|Location2.Y=2867.278mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2862.091mil|Location2.Y=2867.278mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-B5(6121.102mil,2874.528mil) on Bottom Layer And Pad USB1-B6(6121.102mil,2854.843mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2842.407mil|Location2.Y=2847.593mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2842.407mil|Location2.Y=2847.593mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-B6(6121.102mil,2854.843mil) on Bottom Layer And Pad USB1-B7(6121.102mil,2835.157mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2822.721mil|Location2.Y=2827.908mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2822.721mil|Location2.Y=2827.908mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-B7(6121.102mil,2835.157mil) on Bottom Layer And Pad USB1-B8(6121.102mil,2815.472mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2803.036mil|Location2.Y=2808.223mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.918mil|Location2.X=6094.105mil|Location1.Y=2803.036mil|Location2.Y=2808.223mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.055mil &lt; 3.937mil) Between Pad USB1-B8(6121.102mil,2815.472mil) on Bottom Layer And Pad USB1-B9(6121.102mil,2795.787mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.055mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3266.907mil|Location2.X=3273.86mil|Location1.Y=2733.157mil|Location2.Y=2740.181mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3266.907mil|Location2.X=3273.86mil|Location1.Y=2733.157mil|Location2.Y=2740.181mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.414mil &lt; 3.937mil) Between Region (0 hole(s)) Top Solder And Region (0 hole(s)) Top Solder [Top Solder] Mask Sliver [1.414mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3267.907mil|Location2.X=3274.931mil|Location1.Y=2731.39mil|Location2.Y=2738.343mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3267.907mil|Location2.X=3274.931mil|Location1.Y=2731.39mil|Location2.Y=2738.343mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.414mil &lt; 3.937mil) Between Region (0 hole(s)) Top Solder And Region (0 hole(s)) Top Solder [Top Solder] Mask Sliver [1.414mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDZ4QZ4H0MYGTTFWWBOAWRVURTGE0KJCHDSHTTCEJGAD1AXUHD5T1K"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=3.937mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3248.194mil|Location2.X=3251.819mil|Location1.Y=2848.181mil|Location2.Y=2851.806mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3248.194mil|Location2.X=3251.819mil|Location1.Y=2848.181mil|Location2.Y=2851.806mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 3.937mil) Between Text "HWB" (3190.026mil,2840.01mil) on Top Overlay And Track (3248.333mil,2851.667mil)(3265mil,2835mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3278.189mil|Location2.X=3281.813mil|Location1.Y=2848.19mil|Location2.Y=2851.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3278.189mil|Location2.X=3281.813mil|Location1.Y=2848.19mil|Location2.Y=2851.814mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 3.937mil) Between Text "HWB" (3190.026mil,2840.01mil) on Top Overlay And Track (3265mil,2835mil)(3281.666mil,2851.667mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID3VFOP0S1EB2UIX5S3P11IMIBLM1KEQVRE2TM4SB03WOL23VP4O0D"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Net Antennae (Tolerance=0mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1463.726mil|Location2.X=1506.899mil|Location1.Y=2559.548mil|Location2.Y=2626.335mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1463.726mil|Location2.X=1506.899mil|Location1.Y=2559.548mil|Location2.Y=2626.335mil|Absolute=True">Net Antennae: Via (1481.222mil,2577.044mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDJMCEA5DYYE24D1RHRC1AQGFRPCUDARYZ3GJGQHI1HGAILHSEGPYP"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Board Clearance Constraint (Gap=0mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1637.132mil|Location2.X=1646.256mil|Location1.Y=2384.217mil|Location2.Y=2393.341mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1637.132mil|Location2.X=1646.256mil|Location1.Y=2384.217mil|Location2.Y=2393.341mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (1641.694mil,2398.818mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1637.132mil|Location2.X=1646.256mil|Location1.Y=1951.146mil|Location2.Y=1960.27mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1637.132mil|Location2.X=1646.256mil|Location1.Y=1951.146mil|Location2.Y=1960.27mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.393mil &lt; 7.874mil) Between Arc (1641.695mil,1965.747mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1652.88mil|Location2.X=1662.005mil|Location1.Y=1891.697mil|Location2.Y=1900.821mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1652.88mil|Location2.X=1662.005mil|Location1.Y=1891.697mil|Location2.Y=1900.821mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (1657.443mil,1886.22mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1652.88mil|Location2.X=1662.005mil|Location1.Y=2324.768mil|Location2.Y=2333.892mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1652.88mil|Location2.X=1662.005mil|Location1.Y=2324.768mil|Location2.Y=2333.892mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (1657.443mil,2319.291mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1853.668mil|Location2.X=1862.792mil|Location1.Y=1951.146mil|Location2.Y=1960.27mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1853.668mil|Location2.X=1862.792mil|Location1.Y=1951.146mil|Location2.Y=1960.27mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.393mil &lt; 7.874mil) Between Arc (1858.23mil,1965.747mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1853.668mil|Location2.X=1862.792mil|Location1.Y=2384.217mil|Location2.Y=2393.341mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1853.668mil|Location2.X=1862.792mil|Location1.Y=2384.217mil|Location2.Y=2393.341mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (1858.23mil,2398.818mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1869.416mil|Location2.X=1878.54mil|Location1.Y=1891.697mil|Location2.Y=1900.821mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1869.416mil|Location2.X=1878.54mil|Location1.Y=1891.697mil|Location2.Y=1900.821mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (1873.978mil,1886.22mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1869.416mil|Location2.X=1878.54mil|Location1.Y=2324.768mil|Location2.Y=2333.892mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1869.416mil|Location2.X=1878.54mil|Location1.Y=2324.768mil|Location2.Y=2333.892mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (1873.978mil,2319.291mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2070.203mil|Location2.X=2079.327mil|Location1.Y=1951.146mil|Location2.Y=1960.27mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2070.203mil|Location2.X=2079.327mil|Location1.Y=1951.146mil|Location2.Y=1960.27mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.393mil &lt; 7.874mil) Between Arc (2074.765mil,1965.747mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2070.203mil|Location2.X=2079.327mil|Location1.Y=2384.217mil|Location2.Y=2393.341mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2070.203mil|Location2.X=2079.327mil|Location1.Y=2384.217mil|Location2.Y=2393.341mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (2074.765mil,2398.818mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2085.952mil|Location2.X=2095.075mil|Location1.Y=1891.697mil|Location2.Y=1900.821mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2085.952mil|Location2.X=2095.075mil|Location1.Y=1891.697mil|Location2.Y=1900.821mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (2090.514mil,1886.22mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2085.952mil|Location2.X=2095.075mil|Location1.Y=2324.768mil|Location2.Y=2333.892mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2085.952mil|Location2.X=2095.075mil|Location1.Y=2324.768mil|Location2.Y=2333.892mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (2090.514mil,2319.291mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2286.739mil|Location2.X=2295.863mil|Location1.Y=1951.146mil|Location2.Y=1960.27mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2286.739mil|Location2.X=2295.863mil|Location1.Y=1951.146mil|Location2.Y=1960.27mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.393mil &lt; 7.874mil) Between Arc (2291.301mil,1965.747mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2286.739mil|Location2.X=2295.863mil|Location1.Y=2384.217mil|Location2.Y=2393.341mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2286.739mil|Location2.X=2295.863mil|Location1.Y=2384.217mil|Location2.Y=2393.341mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (2291.301mil,2398.818mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2302.487mil|Location2.X=2311.611mil|Location1.Y=1891.697mil|Location2.Y=1900.821mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2302.487mil|Location2.X=2311.611mil|Location1.Y=1891.697mil|Location2.Y=1900.821mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (2307.049mil,1886.22mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2302.487mil|Location2.X=2311.611mil|Location1.Y=2324.768mil|Location2.Y=2333.892mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2302.487mil|Location2.X=2311.611mil|Location1.Y=2324.768mil|Location2.Y=2333.892mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (2307.049mil,2319.291mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2503.274mil|Location2.X=2512.398mil|Location1.Y=1951.146mil|Location2.Y=1960.27mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2503.274mil|Location2.X=2512.398mil|Location1.Y=1951.146mil|Location2.Y=1960.27mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.393mil &lt; 7.874mil) Between Arc (2507.836mil,1965.747mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2503.274mil|Location2.X=2512.398mil|Location1.Y=2384.217mil|Location2.Y=2393.341mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2503.274mil|Location2.X=2512.398mil|Location1.Y=2384.217mil|Location2.Y=2393.341mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (2507.836mil,2398.818mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2519.022mil|Location2.X=2528.146mil|Location1.Y=1891.697mil|Location2.Y=1900.821mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2519.022mil|Location2.X=2528.146mil|Location1.Y=1891.697mil|Location2.Y=1900.821mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (2523.584mil,1886.22mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2519.022mil|Location2.X=2528.146mil|Location1.Y=2324.768mil|Location2.Y=2333.892mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2519.022mil|Location2.X=2528.146mil|Location1.Y=2324.768mil|Location2.Y=2333.892mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (2523.584mil,2319.291mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2719.81mil|Location2.X=2728.934mil|Location1.Y=1951.146mil|Location2.Y=1960.27mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2719.81mil|Location2.X=2728.934mil|Location1.Y=1951.146mil|Location2.Y=1960.27mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.393mil &lt; 7.874mil) Between Arc (2724.372mil,1965.747mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2719.81mil|Location2.X=2728.934mil|Location1.Y=2384.217mil|Location2.Y=2393.341mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2719.81mil|Location2.X=2728.934mil|Location1.Y=2384.217mil|Location2.Y=2393.341mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (2724.372mil,2398.818mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2735.558mil|Location2.X=2744.682mil|Location1.Y=1891.697mil|Location2.Y=1900.821mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2735.558mil|Location2.X=2744.682mil|Location1.Y=1891.697mil|Location2.Y=1900.821mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (2740.12mil,1886.22mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2735.558mil|Location2.X=2744.682mil|Location1.Y=2324.768mil|Location2.Y=2333.892mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2735.558mil|Location2.X=2744.682mil|Location1.Y=2324.768mil|Location2.Y=2333.892mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (2740.12mil,2319.291mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4609.573mil|Location2.X=4618.697mil|Location1.Y=1734.611mil|Location2.Y=1743.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4609.573mil|Location2.X=4618.697mil|Location1.Y=1734.611mil|Location2.Y=1743.735mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (4614.135mil,1749.212mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4609.573mil|Location2.X=4618.697mil|Location1.Y=2167.681mil|Location2.Y=2176.805mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4609.573mil|Location2.X=4618.697mil|Location1.Y=2167.681mil|Location2.Y=2176.805mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (4614.135mil,2182.283mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4609.573mil|Location2.X=4618.697mil|Location1.Y=2600.752mil|Location2.Y=2609.876mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4609.573mil|Location2.X=4618.697mil|Location1.Y=2600.752mil|Location2.Y=2609.876mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (4614.135mil,2615.354mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4625.321mil|Location2.X=4634.445mil|Location1.Y=1675.162mil|Location2.Y=1684.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4625.321mil|Location2.X=4634.445mil|Location1.Y=1675.162mil|Location2.Y=1684.286mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (4629.883mil,1669.685mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4625.321mil|Location2.X=4634.445mil|Location1.Y=2108.233mil|Location2.Y=2117.357mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4625.321mil|Location2.X=4634.445mil|Location1.Y=2108.233mil|Location2.Y=2117.357mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (4629.883mil,2102.756mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4625.321mil|Location2.X=4634.445mil|Location1.Y=2541.304mil|Location2.Y=2550.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4625.321mil|Location2.X=4634.445mil|Location1.Y=2541.304mil|Location2.Y=2550.428mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (4629.883mil,2535.826mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4826.109mil|Location2.X=4835.233mil|Location1.Y=1734.611mil|Location2.Y=1743.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4826.109mil|Location2.X=4835.233mil|Location1.Y=1734.611mil|Location2.Y=1743.735mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (4830.671mil,1749.212mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4826.109mil|Location2.X=4835.233mil|Location1.Y=2167.681mil|Location2.Y=2176.805mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4826.109mil|Location2.X=4835.233mil|Location1.Y=2167.681mil|Location2.Y=2176.805mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (4830.671mil,2182.283mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4826.109mil|Location2.X=4835.233mil|Location1.Y=2600.752mil|Location2.Y=2609.876mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4826.109mil|Location2.X=4835.233mil|Location1.Y=2600.752mil|Location2.Y=2609.876mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (4830.671mil,2615.354mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.857mil|Location2.X=4850.981mil|Location1.Y=1675.162mil|Location2.Y=1684.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.857mil|Location2.X=4850.981mil|Location1.Y=1675.162mil|Location2.Y=1684.286mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (4846.419mil,1669.685mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.857mil|Location2.X=4850.981mil|Location1.Y=2108.233mil|Location2.Y=2117.357mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.857mil|Location2.X=4850.981mil|Location1.Y=2108.233mil|Location2.Y=2117.357mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (4846.419mil,2102.756mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.857mil|Location2.X=4850.981mil|Location1.Y=2541.304mil|Location2.Y=2550.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4841.857mil|Location2.X=4850.981mil|Location1.Y=2541.304mil|Location2.Y=2550.428mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (4846.419mil,2535.826mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5042.644mil|Location2.X=5051.768mil|Location1.Y=1734.611mil|Location2.Y=1743.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5042.644mil|Location2.X=5051.768mil|Location1.Y=1734.611mil|Location2.Y=1743.735mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5047.206mil,1749.212mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5042.644mil|Location2.X=5051.768mil|Location1.Y=2167.681mil|Location2.Y=2176.805mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5042.644mil|Location2.X=5051.768mil|Location1.Y=2167.681mil|Location2.Y=2176.805mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5047.206mil,2182.283mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5042.644mil|Location2.X=5051.768mil|Location1.Y=2600.752mil|Location2.Y=2609.876mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5042.644mil|Location2.X=5051.768mil|Location1.Y=2600.752mil|Location2.Y=2609.876mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5047.206mil,2615.354mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5058.392mil|Location2.X=5067.516mil|Location1.Y=1675.162mil|Location2.Y=1684.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5058.392mil|Location2.X=5067.516mil|Location1.Y=1675.162mil|Location2.Y=1684.286mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5062.954mil,1669.685mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5058.392mil|Location2.X=5067.516mil|Location1.Y=2108.233mil|Location2.Y=2117.357mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5058.392mil|Location2.X=5067.516mil|Location1.Y=2108.233mil|Location2.Y=2117.357mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5062.954mil,2102.756mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5058.392mil|Location2.X=5067.516mil|Location1.Y=2541.304mil|Location2.Y=2550.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5058.392mil|Location2.X=5067.516mil|Location1.Y=2541.304mil|Location2.Y=2550.428mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.395mil &lt; 7.874mil) Between Arc (5062.954mil,2535.826mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5259.18mil|Location2.X=5268.304mil|Location1.Y=1734.611mil|Location2.Y=1743.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5259.18mil|Location2.X=5268.304mil|Location1.Y=1734.611mil|Location2.Y=1743.735mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5263.742mil,1749.212mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5259.18mil|Location2.X=5268.304mil|Location1.Y=2167.681mil|Location2.Y=2176.805mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5259.18mil|Location2.X=5268.304mil|Location1.Y=2167.681mil|Location2.Y=2176.805mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5263.742mil,2182.283mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5259.179mil|Location2.X=5268.303mil|Location1.Y=2600.752mil|Location2.Y=2609.876mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5259.179mil|Location2.X=5268.303mil|Location1.Y=2600.752mil|Location2.Y=2609.876mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5263.742mil,2615.354mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5274.928mil|Location2.X=5284.052mil|Location1.Y=1675.162mil|Location2.Y=1684.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5274.928mil|Location2.X=5284.052mil|Location1.Y=1675.162mil|Location2.Y=1684.286mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5279.49mil,1669.685mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5274.928mil|Location2.X=5284.052mil|Location1.Y=2108.233mil|Location2.Y=2117.357mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5274.928mil|Location2.X=5284.052mil|Location1.Y=2108.233mil|Location2.Y=2117.357mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5279.49mil,2102.756mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5274.928mil|Location2.X=5284.052mil|Location1.Y=2541.305mil|Location2.Y=2550.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5274.928mil|Location2.X=5284.052mil|Location1.Y=2541.305mil|Location2.Y=2550.428mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.395mil &lt; 7.874mil) Between Arc (5279.49mil,2535.826mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5475.715mil|Location2.X=5484.839mil|Location1.Y=1734.611mil|Location2.Y=1743.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5475.715mil|Location2.X=5484.839mil|Location1.Y=1734.611mil|Location2.Y=1743.735mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5480.277mil,1749.212mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5475.715mil|Location2.X=5484.839mil|Location1.Y=2167.681mil|Location2.Y=2176.805mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5475.715mil|Location2.X=5484.839mil|Location1.Y=2167.681mil|Location2.Y=2176.805mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5480.277mil,2182.283mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5475.715mil|Location2.X=5484.839mil|Location1.Y=2600.752mil|Location2.Y=2609.876mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5475.715mil|Location2.X=5484.839mil|Location1.Y=2600.752mil|Location2.Y=2609.876mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5480.277mil,2615.354mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5491.463mil|Location2.X=5500.587mil|Location1.Y=1675.162mil|Location2.Y=1684.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5491.463mil|Location2.X=5500.587mil|Location1.Y=1675.162mil|Location2.Y=1684.286mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5496.025mil,1669.685mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5491.463mil|Location2.X=5500.587mil|Location1.Y=2108.233mil|Location2.Y=2117.357mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5491.463mil|Location2.X=5500.587mil|Location1.Y=2108.233mil|Location2.Y=2117.357mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5496.025mil,2102.756mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5491.463mil|Location2.X=5500.587mil|Location1.Y=2541.305mil|Location2.Y=2550.429mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5491.463mil|Location2.X=5500.587mil|Location1.Y=2541.305mil|Location2.Y=2550.429mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.396mil &lt; 7.874mil) Between Arc (5496.025mil,2535.826mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5692.251mil|Location2.X=5701.374mil|Location1.Y=1734.611mil|Location2.Y=1743.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5692.251mil|Location2.X=5701.374mil|Location1.Y=1734.611mil|Location2.Y=1743.735mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5696.812mil,1749.212mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5692.251mil|Location2.X=5701.374mil|Location1.Y=2167.681mil|Location2.Y=2176.805mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5692.251mil|Location2.X=5701.374mil|Location1.Y=2167.681mil|Location2.Y=2176.805mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5696.812mil,2182.283mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5692.251mil|Location2.X=5701.374mil|Location1.Y=2600.752mil|Location2.Y=2609.876mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5692.251mil|Location2.X=5701.374mil|Location1.Y=2600.752mil|Location2.Y=2609.876mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5696.813mil,2615.354mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5707.999mil|Location2.X=5717.123mil|Location1.Y=1675.162mil|Location2.Y=1684.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5707.999mil|Location2.X=5717.123mil|Location1.Y=1675.162mil|Location2.Y=1684.286mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5712.561mil,1669.685mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5707.999mil|Location2.X=5717.123mil|Location1.Y=2108.233mil|Location2.Y=2117.357mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5707.999mil|Location2.X=5717.123mil|Location1.Y=2108.233mil|Location2.Y=2117.357mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.394mil &lt; 7.874mil) Between Arc (5712.561mil,2102.756mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5705.954mil|Location2.X=5715.078mil|Location1.Y=2541.544mil|Location2.Y=2550.669mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5705.954mil|Location2.X=5715.078mil|Location1.Y=2541.544mil|Location2.Y=2550.669mil|Absolute=True">Board Outline Clearance(Cutout Edge): (1.278mil &lt; 7.874mil) Between Arc (5712.561mil,2535.826mil) on Top Overlay And Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4486.621mil|Location2.X=4495.745mil|Location1.Y=1704.886mil|Location2.Y=1714.01mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4486.621mil|Location2.X=4495.745mil|Location1.Y=1704.886mil|Location2.Y=1714.01mil|Absolute=True">Board Outline Clearance(Cutout Edge): (4.612mil &lt; 7.874mil) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Text "C20" (4420mil,1685mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2274.91mil|Location2.X=2284.034mil|Location1.Y=2537.972mil|Location2.Y=2547.095mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2274.91mil|Location2.X=2284.034mil|Location1.Y=2537.972mil|Location2.Y=2547.095mil|Absolute=True">Board Outline Clearance(Cutout Edge): (7.058mil &lt; 7.874mil) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Text "O ser allt" (2710.528mil,2450mil) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3141.362mil|Location2.X=3150.486mil|Location1.Y=2069.159mil|Location2.Y=2078.282mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3141.362mil|Location2.X=3150.486mil|Location1.Y=2069.159mil|Location2.Y=2078.282mil|Absolute=True">Board Outline Clearance(Cutout Edge): (0.554mil &lt; 7.874mil) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Track (3148.701mil,2073.72mil)(3180.197mil,2073.72mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1385.104mil|Location2.X=1394.228mil|Location1.Y=3138.765mil|Location2.Y=3147.889mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1385.104mil|Location2.X=1394.228mil|Location1.Y=3138.765mil|Location2.Y=3147.889mil|Absolute=True">Board Outline Clearance(Outline Edge): (6.654mil &lt; 7.874mil) Between Board Edge And Text "Kretsn_Brillz_V4
+Theofil E. Petrovski
+LEDs: Albin Lejåker" (2690.334mil,2830mil) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4755.438mil|Location2.X=4764.562mil|Location1.Y=3138.765mil|Location2.Y=3147.889mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4755.438mil|Location2.X=4764.562mil|Location1.Y=3138.765mil|Location2.Y=3147.889mil|Absolute=True">Board Outline Clearance(Outline Edge): (6.654mil &lt; 7.874mil) Between Board Edge And Text "Owner:[ ][ ][ ][ ][ ][ ][ ]" (5975mil,3017.672mil) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3968.047mil|Location2.X=3977.171mil|Location1.Y=3138.525mil|Location2.Y=3147.649mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3968.047mil|Location2.X=3977.171mil|Location1.Y=3138.525mil|Location2.Y=3147.649mil|Absolute=True">Board Outline Clearance(Outline Edge): (7.134mil &lt; 7.874mil) Between Board Edge And Text "R1" (4010mil,3110mil) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4010.451mil|Location2.X=4019.575mil|Location1.Y=3138.76mil|Location2.Y=3147.884mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4010.451mil|Location2.X=4019.575mil|Location1.Y=3138.76mil|Location2.Y=3147.884mil|Absolute=True">Board Outline Clearance(Outline Edge): (6.664mil &lt; 7.874mil) Between Board Edge And Text "Y1" (4025.013mil,3070.01mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3141.392mil|Location2.X=3150.516mil|Location1.Y=1596.717mil|Location2.Y=1605.841mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Theozor\Documents\GitHub\kretsn_glasses_4\Kretsn_Brillz_4\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3141.392mil|Location2.X=3150.516mil|Location1.Y=1596.717mil|Location2.Y=1605.841mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.493mil &lt; 7.874mil) Between Board Edge And Track (3148.701mil,1601.28mil)(3180.197mil,1601.28mil) on Top Overlay </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
